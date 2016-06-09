@@ -7,7 +7,8 @@ class RegexTests: XCTestCase {
     return [
       ("testInitWithValidPattern", testInitWithValidPattern),
       ("testInitWithInvalidPattern", testInitWithInvalidPattern),
-      ("testMatches", testMatches)
+      ("testMatches", testMatchesWhenMatch),
+      ("testMatchesWhenNotMatch", testMatchesWhenNotMatch)
     ]
   }
 
@@ -38,7 +39,17 @@ class RegexTests: XCTestCase {
     XCTAssertNil(regex)
   }
 
-  func testMatches() {
-    //Tyrannosaurus rex
+  func testMatchesWhenMatch() {
+    let regex = try! Regex(pattern: "Tyrannosaurus")
+    let result = regex.matches("Tyrannosaurus")
+
+    XCTAssertTrue(result)
+  }
+
+  func testMatchesWhenNotMatch() {
+    let regex = try! Regex(pattern: "Tyrannosaurus")
+    let result = regex.matches("Spinosaurus")
+
+    XCTAssertFalse(result)
   }
 }

@@ -37,6 +37,6 @@ public final class Regex {
     var offsets = [regmatch_t](repeating: regmatch_t(), count: 1)
     let result = regexec(&preg, string, offsets.count, &offsets, flags.rawValue)
 
-    return result != 1
+    return result == 0
   }
 }
