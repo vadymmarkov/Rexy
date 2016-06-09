@@ -36,9 +36,6 @@ public struct CompilationFlags: OptionSet {
   // Newline-sensitive matching.
   public static let newLineSensitive = CompilationFlags(rawValue: REG_NEWLINE)
 
-  /// Match-any-character operators don't match a newline.
-  public static let newline = CompilationFlags(rawValue: REG_NEWLINE)
-
   /// Do not report position of matches.
   public static let noSpecialCharacters = CompilationFlags(rawValue: REG_NOSPEC)
 
