@@ -5,9 +5,11 @@
 #endif
 
 /**
- POSIX regex matching flags
+ POSIX regex matching flags (eflag).
  */
 public struct MatchFlags: OptionSet {
+
+  /// Raw value
   public let rawValue: Int32
 
   /**
@@ -34,12 +36,18 @@ public struct MatchFlags: OptionSet {
 
 
 /**
- Flags used to determine the type of compilation
+ Flags used to determine the type of compilation (cflag).
  */
 public struct CompilationFlags: OptionSet {
 
+  /// Raw value
   public let rawValue: Int32
 
+  /**
+   Creates a new flag
+
+   - Parameter rawValue: value
+   */
   public init(rawValue: Int32) {
     self.rawValue = rawValue
   }
