@@ -1,5 +1,4 @@
 import XCTest
-import PathKit
 @testable import Rexy
 
 class RexyTests: XCTestCase {
