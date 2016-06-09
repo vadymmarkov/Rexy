@@ -7,11 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D56BFB171D0A096600E71179 /* CompilationFlags.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56BFB161D0A096600E71179 /* CompilationFlags.swift */; };
-		D56BFB1A1D0A0A5600E71179 /* CompilationFlagsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56BFB181D0A0A1F00E71179 /* CompilationFlagsTests.swift */; };
+		D56BFB171D0A096600E71179 /* CFlags.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56BFB161D0A096600E71179 /* CFlags.swift */; };
+		D56BFB1A1D0A0A5600E71179 /* CFlagsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56BFB181D0A0A1F00E71179 /* CFlagsTests.swift */; };
+		D56BFB1C1D0A0BD200E71179 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56BFB1B1D0A0BD200E71179 /* Error.swift */; };
+		D56BFB1E1D0A0E2800E71179 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56BFB1D1D0A0E2800E71179 /* Regex.swift */; };
+		D56BFB211D0A130200E71179 /* RegexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56BFB1F1D0A130100E71179 /* RegexTests.swift */; };
 		_LinkFileRef_Rexy_via_RexyTestSuite /* Rexy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_Rexy" /* Rexy.framework */; };
-		__src_cc_ref_Sources/Rexy/Rexy.swift /* MatchFlags.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Rexy/Rexy.swift /* MatchFlags.swift */; };
-		__src_cc_ref_Tests/Rexy/RexyTests.swift /* MatchFlagsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Tests/Rexy/RexyTests.swift /* MatchFlagsTests.swift */; };
+		__src_cc_ref_Sources/Rexy/Rexy.swift /* EFlags.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Rexy/Rexy.swift /* EFlags.swift */; };
+		__src_cc_ref_Tests/Rexy/RexyTests.swift /* EFlagsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Tests/Rexy/RexyTests.swift /* EFlagsTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,14 +28,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		D56BFB161D0A096600E71179 /* CompilationFlags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompilationFlags.swift; sourceTree = "<group>"; };
-		D56BFB181D0A0A1F00E71179 /* CompilationFlagsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompilationFlagsTests.swift; sourceTree = "<group>"; };
+		D56BFB161D0A096600E71179 /* CFlags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFlags.swift; sourceTree = "<group>"; };
+		D56BFB181D0A0A1F00E71179 /* CFlagsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFlagsTests.swift; sourceTree = "<group>"; };
+		D56BFB1B1D0A0BD200E71179 /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		D56BFB1D1D0A0E2800E71179 /* Regex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
+		D56BFB1F1D0A130100E71179 /* RegexTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegexTests.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Package.swift /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Rexy.xcodeproj/Configs/Project.xcconfig /* Project.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Project.xcconfig; path = Rexy.xcodeproj/Configs/Project.xcconfig; sourceTree = "<group>"; };
 		__PBXFileRef_RexyTestSuite_Info.plist /* RexyTestSuite_Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = RexyTestSuite_Info.plist; path = Rexy.xcodeproj/RexyTestSuite_Info.plist; sourceTree = SOURCE_ROOT; };
 		__PBXFileRef_Rexy_Info.plist /* Rexy_Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Rexy_Info.plist; path = Rexy.xcodeproj/Rexy_Info.plist; sourceTree = SOURCE_ROOT; };
-		__PBXFileRef_Sources/Rexy/Rexy.swift /* MatchFlags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchFlags.swift; sourceTree = "<group>"; };
-		__PBXFileRef_Tests/Rexy/RexyTests.swift /* MatchFlagsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchFlagsTests.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/Rexy/Rexy.swift /* EFlags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EFlags.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Tests/Rexy/RexyTests.swift /* EFlagsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EFlagsTests.swift; sourceTree = "<group>"; };
 		"_____Product_Rexy" /* Rexy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Rexy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"_____Product_RexyTestSuite" /* RexyTestSuite.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = RexyTestSuite.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -104,8 +110,10 @@
 			isa = PBXGroup;
 			children = (
 				__PBXFileRef_Rexy_Info.plist /* Rexy_Info.plist */,
-				__PBXFileRef_Sources/Rexy/Rexy.swift /* MatchFlags.swift */,
-				D56BFB161D0A096600E71179 /* CompilationFlags.swift */,
+				D56BFB161D0A096600E71179 /* CFlags.swift */,
+				__PBXFileRef_Sources/Rexy/Rexy.swift /* EFlags.swift */,
+				D56BFB1B1D0A0BD200E71179 /* Error.swift */,
+				D56BFB1D1D0A0E2800E71179 /* Regex.swift */,
 			);
 			name = Rexy;
 			path = Sources/Rexy;
@@ -115,8 +123,9 @@
 			isa = PBXGroup;
 			children = (
 				__PBXFileRef_RexyTestSuite_Info.plist /* RexyTestSuite_Info.plist */,
-				__PBXFileRef_Tests/Rexy/RexyTests.swift /* MatchFlagsTests.swift */,
-				D56BFB181D0A0A1F00E71179 /* CompilationFlagsTests.swift */,
+				D56BFB181D0A0A1F00E71179 /* CFlagsTests.swift */,
+				__PBXFileRef_Tests/Rexy/RexyTests.swift /* EFlagsTests.swift */,
+				D56BFB1F1D0A130100E71179 /* RegexTests.swift */,
 			);
 			name = RexyTestSuite;
 			path = Tests/Rexy;
@@ -197,8 +206,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				__src_cc_ref_Sources/Rexy/Rexy.swift /* MatchFlags.swift in Sources */,
-				D56BFB171D0A096600E71179 /* CompilationFlags.swift in Sources */,
+				__src_cc_ref_Sources/Rexy/Rexy.swift /* EFlags.swift in Sources */,
+				D56BFB1E1D0A0E2800E71179 /* Regex.swift in Sources */,
+				D56BFB1C1D0A0BD200E71179 /* Error.swift in Sources */,
+				D56BFB171D0A096600E71179 /* CFlags.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,8 +217,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				__src_cc_ref_Tests/Rexy/RexyTests.swift /* MatchFlagsTests.swift in Sources */,
-				D56BFB1A1D0A0A5600E71179 /* CompilationFlagsTests.swift in Sources */,
+				__src_cc_ref_Tests/Rexy/RexyTests.swift /* EFlagsTests.swift in Sources */,
+				D56BFB211D0A130200E71179 /* RegexTests.swift in Sources */,
+				D56BFB1A1D0A0A5600E71179 /* CFlagsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

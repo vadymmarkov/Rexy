@@ -7,7 +7,7 @@
 /**
  POSIX regex matching flags (eflag).
  */
-public struct MatchFlags: OptionSet {
+public struct EFlags: OptionSet {
 
   /// Raw value
   public let rawValue: Int32
@@ -22,14 +22,14 @@ public struct MatchFlags: OptionSet {
   }
 
   /// First character not at beginning of line
-  public static let notAtBeginningOfLine = MatchFlags(rawValue: REG_NOTBOL)
+  public static let notAtBeginningOfLine = EFlags(rawValue: REG_NOTBOL)
 
   /// Last character not at end of line
-  public static let notAtEndOfLine = MatchFlags(rawValue: REG_NOTEOL)
+  public static let notAtEndOfLine = EFlags(rawValue: REG_NOTEOL)
 
   /// String start/end in pmatch[0]
-  public static let startEnd = MatchFlags(rawValue: REG_STARTEND)
+  public static let startEnd = EFlags(rawValue: REG_STARTEND)
 
   /// Force use of backref code
-  public static let backref = MatchFlags(rawValue: REG_BACKR)
+  public static let backref = EFlags(rawValue: REG_BACKR)
 }
