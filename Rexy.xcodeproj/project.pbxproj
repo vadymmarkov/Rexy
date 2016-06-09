@@ -11,6 +11,7 @@
 		D56BFB1A1D0A0A5600E71179 /* CFlagsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56BFB181D0A0A1F00E71179 /* CFlagsTests.swift */; };
 		D56BFB1C1D0A0BD200E71179 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56BFB1B1D0A0BD200E71179 /* Error.swift */; };
 		D56BFB1E1D0A0E2800E71179 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56BFB1D1D0A0E2800E71179 /* Regex.swift */; };
+		D56BFB211D0A130200E71179 /* RegexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56BFB1F1D0A130100E71179 /* RegexTests.swift */; };
 		_LinkFileRef_Rexy_via_RexyTestSuite /* Rexy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_Rexy" /* Rexy.framework */; };
 		__src_cc_ref_Sources/Rexy/Rexy.swift /* EFlags.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Rexy/Rexy.swift /* EFlags.swift */; };
 		__src_cc_ref_Tests/Rexy/RexyTests.swift /* EFlagsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Tests/Rexy/RexyTests.swift /* EFlagsTests.swift */; };
@@ -31,6 +32,7 @@
 		D56BFB181D0A0A1F00E71179 /* CFlagsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFlagsTests.swift; sourceTree = "<group>"; };
 		D56BFB1B1D0A0BD200E71179 /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		D56BFB1D1D0A0E2800E71179 /* Regex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
+		D56BFB1F1D0A130100E71179 /* RegexTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegexTests.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Package.swift /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Rexy.xcodeproj/Configs/Project.xcconfig /* Project.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Project.xcconfig; path = Rexy.xcodeproj/Configs/Project.xcconfig; sourceTree = "<group>"; };
 		__PBXFileRef_RexyTestSuite_Info.plist /* RexyTestSuite_Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = RexyTestSuite_Info.plist; path = Rexy.xcodeproj/RexyTestSuite_Info.plist; sourceTree = SOURCE_ROOT; };
@@ -123,6 +125,7 @@
 				__PBXFileRef_RexyTestSuite_Info.plist /* RexyTestSuite_Info.plist */,
 				D56BFB181D0A0A1F00E71179 /* CFlagsTests.swift */,
 				__PBXFileRef_Tests/Rexy/RexyTests.swift /* EFlagsTests.swift */,
+				D56BFB1F1D0A130100E71179 /* RegexTests.swift */,
 			);
 			name = RexyTestSuite;
 			path = Tests/Rexy;
@@ -215,6 +218,7 @@
 			buildActionMask = 0;
 			files = (
 				__src_cc_ref_Tests/Rexy/RexyTests.swift /* EFlagsTests.swift in Sources */,
+				D56BFB211D0A130200E71179 /* RegexTests.swift in Sources */,
 				D56BFB1A1D0A0A5600E71179 /* CFlagsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
