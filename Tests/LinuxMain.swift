@@ -4,7 +4,10 @@ import XCTest
 @testable import RexyTestSuite
 
 XCTMain([
-  testCase(RexyTests.allTests),
+  testCase(CFlagsTests.allTests),
+  testCase(EFlagsTests.allTests),
+  testCase(ErrorTests.allTests),
+  testCase(RegexTests.allTests),
 ])
 
 #endif
