@@ -12,15 +12,15 @@ class CFlagsTests: XCTestCase {
   // MARK: - Tests
 
   func testFlags() {
-    XCTAssertEqual(Regex.CFlags.basic.rawValue, REG_BASIC)
-    XCTAssertEqual(Regex.CFlags.extended.rawValue, REG_EXTENDED)
-    XCTAssertEqual(Regex.CFlags.caseInsensitive.rawValue, REG_ICASE)
-    XCTAssertEqual(Regex.CFlags.noPositions.rawValue, REG_NOSUB)
-    XCTAssertEqual(Regex.CFlags.newLineSensitive.rawValue, REG_NEWLINE)
-    XCTAssertEqual(Regex.CFlags.noSpecialCharacters.rawValue, REG_NOSPEC)
-    XCTAssertEqual(Regex.CFlags.literal.rawValue, REG_LITERAL)
-    XCTAssertEqual(Regex.CFlags.endPointer.rawValue, REG_PEND)
-    XCTAssertEqual(Regex.CFlags.minimal.rawValue, REG_MINIMAL)
-    XCTAssertEqual(Regex.CFlags.nonGreedy.rawValue, REG_UNGREEDY)
+    XCTAssertEqual(Regex.CFlags.basic.rawValue, 0)
+    XCTAssertEqual(Regex.CFlags.extended.rawValue, 1)
+    XCTAssertEqual(Regex.CFlags.caseInsensitive.rawValue, 2)
+    XCTAssertEqual(Regex.CFlags.noPositions.rawValue, 3)
+    XCTAssertEqual(Regex.CFlags.newLineSensitive.rawValue, 4)
+    XCTAssertEqual(Regex.CFlags.noSpecialCharacters.rawValue, 5)
+    XCTAssertEqual(Regex.CFlags.literal.rawValue, 6)
+    XCTAssertEqual(Regex.CFlags.endPointer.rawValue, 7)
+    XCTAssertEqual(Regex.CFlags.minimal.rawValue, 8)
+    XCTAssertEqual(Regex.CFlags.nonGreedy.rawValue, 9)
   }
 }
