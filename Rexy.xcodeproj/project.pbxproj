@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D51BF4701D0A2F950034A7DA /* ErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51BF46E1D0A2F8E0034A7DA /* ErrorTests.swift */; };
 		D56BFB171D0A096600E71179 /* CFlags.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56BFB161D0A096600E71179 /* CFlags.swift */; };
 		D56BFB1A1D0A0A5600E71179 /* CFlagsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56BFB181D0A0A1F00E71179 /* CFlagsTests.swift */; };
 		D56BFB1C1D0A0BD200E71179 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56BFB1B1D0A0BD200E71179 /* Error.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D51BF46E1D0A2F8E0034A7DA /* ErrorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorTests.swift; sourceTree = "<group>"; };
 		D56BFB161D0A096600E71179 /* CFlags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFlags.swift; sourceTree = "<group>"; };
 		D56BFB181D0A0A1F00E71179 /* CFlagsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFlagsTests.swift; sourceTree = "<group>"; };
 		D56BFB1B1D0A0BD200E71179 /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				D56BFB181D0A0A1F00E71179 /* CFlagsTests.swift */,
 				__PBXFileRef_Tests/Rexy/RexyTests.swift /* EFlagsTests.swift */,
 				D56BFB1F1D0A130100E71179 /* RegexTests.swift */,
+				D51BF46E1D0A2F8E0034A7DA /* ErrorTests.swift */,
 			);
 			name = RexyTestSuite;
 			path = Tests/Rexy;
@@ -217,6 +220,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				D51BF4701D0A2F950034A7DA /* ErrorTests.swift in Sources */,
 				__src_cc_ref_Tests/Rexy/RexyTests.swift /* EFlagsTests.swift in Sources */,
 				D56BFB211D0A130200E71179 /* RegexTests.swift in Sources */,
 				D56BFB1A1D0A0A5600E71179 /* CFlagsTests.swift in Sources */,

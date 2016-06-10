@@ -11,7 +11,9 @@ class RegexTests: XCTestCase {
       ("testNotMatches", testNotMatches),
       ("testGroup", testGroup),
       ("testGroups", testGroups),
-      ("testNoGroups", testNoGroups)
+      ("testNoGroups", testNoGroups),
+      ("testReplace", testReplace),
+      ("testNoReplace", testNoReplace)
     ]
   }
 
@@ -75,5 +77,19 @@ class RegexTests: XCTestCase {
     let groups = regex.groups("Spinosaurus")
 
     XCTAssertTrue(groups.isEmpty)
+  }
+
+  func testReplace() {
+    let regex = try! Regex(pattern: "Tyrannosaurus")
+    let string = regex.replace("Tyrannosaurus Rex Tyrannosaurus", with: "Dinosaur")
+
+    XCTAssertEqual(string, "Dinosaur Rex Dinosaur")
+  }
+
+  func testNoReplace() {
+    let regex = try! Regex(pattern: "Spinosaurus")
+    let string = regex.replace("Tyrannosaurus Rex", with: "Dinosaur")
+
+    XCTAssertEqual(string, "Tyrannosaurus Rex")
   }
 }
