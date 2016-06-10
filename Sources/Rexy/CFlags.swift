@@ -9,13 +9,13 @@
  */
 public struct CFlags: OptionSet {
 
-  /// Raw value
+  /// Raw value.
   public let rawValue: Int32
 
   /**
-   Creates a new flag
+   Creates a new cflag.
 
-   - Parameter rawValue: value
+   - Parameter rawValue: The value.
    */
   public init(rawValue: Int32) {
     self.rawValue = rawValue
@@ -39,15 +39,15 @@ public struct CFlags: OptionSet {
   /// Do not report position of matches.
   public static let noSpecialCharacters = CFlags(rawValue: REG_NOSPEC)
 
-  /// Interpret the entire regex argument as a literal string
+  /// Interpret the entire regex argument as a literal string.
   public static let literal = CFlags(rawValue: REG_LITERAL)
 
-  /// Point to the end of the expression to compile
+  /// Point to the end of the expression to compile.
   public static let endPointer = CFlags(rawValue: REG_PEND)
 
-  /// Compile using minimal repetition
+  /// Compile using minimal repetition.
   public static let minimal = CFlags(rawValue: REG_MINIMAL)
 
-  /// Make the operators non-greedy by default and greedy when a ? is specified
+  /// Make the operators non-greedy by default and greedy when a ? is specified.
   public static let nonGreedy = CFlags(rawValue: REG_UNGREEDY)
 }

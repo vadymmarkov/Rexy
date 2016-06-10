@@ -1,12 +1,16 @@
+/**
+ Representation of Regular Expression error.
+ */
 public struct Error: ErrorProtocol {
 
+  /// Error description.
   public let description: String
 
   /**
-   Creates a new regex error
+   Creates a new regex error.
 
-   - Parameter result: Compiled result
-   - Parameter preg: The structure
+   - Parameter result: Compiled result.
+   - Parameter compiledPattern: Compiled regex pattern.
    */
   public init(from result: Int32, compiledPattern: regex_t) {
     var compiledPattern = compiledPattern
