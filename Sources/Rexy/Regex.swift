@@ -16,7 +16,7 @@ public final class Regex {
     let result = regcomp(&compiledPattern, pattern, flags.rawValue)
 
     guard result == 0 else {
-      throw Error(from: result, preg: compiledPattern)
+      throw Error(from: result, compiledPattern: compiledPattern)
     }
   }
 
@@ -50,9 +50,9 @@ public final class Regex {
 
    - Returns: Found groups.
    */
-  public func groups(_ string: String, maxGroups: Int = 10, maxMatches: Int = Int.max,
+  public func groups(_ source: String, maxGroups: Int = 10, maxMatches: Int = Int.max,
                      flags: EFlags = []) -> [String] {
-    var string = string
+    var string = source
     var groups = [String]()
 
     for _ in 0 ..< maxMatches {
@@ -84,5 +84,42 @@ public final class Regex {
     }
 
     return groups
+  }
+
+  public func replace(_ source: String, with replacement: String, maxMatches: Int = 10,
+                      maxOccurrences: Int = Int.max, flags: EFlags = []) -> String {
+    var string = source
+    var output: String = ""
+
+    for _ in 0 ..< maxOccurrences {
+      var elements = [regmatch_t](repeating: regmatch_t(), count: maxMatches)
+      let result = regexec(&compiledPattern, string, elements.count, &elements, flags.rawValue)
+
+      guard result == 0 else {
+        break
+      }
+
+      let start = Int(elements[0].rm_so)
+      let end = Int(elements[0].rm_eo)
+      let startIndex = string.utf8.index(string.utf8.startIndex, offsetBy: end)
+      let endIndex = string.utf8.endIndex
+      var stringBytes = [UInt8](string.utf8)
+      let replacementBytes = [UInt8](replacement.utf8)
+      let replacedOffset = replacement.utf8.count + start
+
+      stringBytes.replaceSubrange(start ..< end, with: replacementBytes)
+
+      var replaced = stringBytes.reduce("") {
+        $0 + String(UnicodeScalar($1))
+      }
+
+      let replacedEndIndex = replaced.utf8.index(replaced.utf8.startIndex, offsetBy: replacedOffset)
+
+      replaced = String(replaced.utf8[replaced.utf8.startIndex ..< replacedEndIndex])
+      output += replaced
+      string = String(string.utf8[startIndex ..< endIndex])
+    }
+
+    return output + string
   }
 }
