@@ -1,8 +1,8 @@
-//#if os(Linux)
-//  @_exported import Glibc
-//#else
+#if os(Linux)
+  @_exported import Glibc
+#else
   @_exported import Darwin.C
-//#endif
+#endif
 
 /**
  POSIX regex matching flags (eflag).
