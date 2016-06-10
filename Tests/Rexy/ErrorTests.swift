@@ -13,7 +13,7 @@ class ErrorTests: XCTestCase {
 
   func testInit() {
     var compiledPattern = regex_t()
-    let result = regcomp(&compiledPattern, "(ツ)", CFlags.extended.rawValue)
+    let result = regcomp(&compiledPattern, "(ツ)", Regex.CFlags.extended.rawValue)
     let error = Error(from: result, compiledPattern: compiledPattern)
 
     var buffer = [Int8](repeating: 0, count: Int(BUFSIZ))
