@@ -15,6 +15,5 @@ class EFlagsTests: XCTestCase {
     XCTAssertEqual(EFlags.notAtBeginningOfLine.rawValue, REG_NOTBOL)
     XCTAssertEqual(EFlags.notAtEndOfLine.rawValue, REG_NOTEOL)
     XCTAssertEqual(EFlags.startEnd.rawValue, REG_STARTEND)
-    XCTAssertEqual(EFlags.backref.rawValue, REG_BACKR)
   }
 }

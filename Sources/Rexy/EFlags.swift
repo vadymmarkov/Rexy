@@ -1,8 +1,8 @@
-#if os(Linux)
-  @_exported import Glibc
-#else
+//#if os(Linux)
+//  @_exported import Glibc
+//#else
   @_exported import Darwin.C
-#endif
+//#endif
 
 /**
  POSIX regex matching flags (eflag).
@@ -29,7 +29,4 @@ public struct EFlags: OptionSet {
 
   /// String start/end in pmatch[0].
   public static let startEnd = EFlags(rawValue: REG_STARTEND)
-
-  /// Force use of backref code.
-  public static let backref = EFlags(rawValue: REG_BACKR)
 }
