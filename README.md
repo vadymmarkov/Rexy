@@ -11,9 +11,9 @@
 ## Features
 
 - [x] Pattern matching
-- [x] Capturing Groups
+- [x] Capturing groups
 - [x] Replace method
-- [x] Representation of regular expression error
+- [x] Representation of a regular expression error
 - [x] Option sets with default constants for compilation flags (`cflag`) and regex matching flags (`eflag`)
 - [x] Extensive unit test coverage
 
