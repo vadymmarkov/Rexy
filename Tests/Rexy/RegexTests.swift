@@ -48,7 +48,7 @@ class RegexTests: XCTestCase {
     let regex = try! Regex(pattern: "Tyrannosaurus")
     XCTAssertTrue(regex.matches("Tyrannosaurus"))
     XCTAssertTrue("Tyrannosaurus" =~ regex)
-    XCTAssertTrue("Tyrannosaurus" =~ "Tyrannosaurus$")
+    XCTAssertTrue("Tyrannosaurus" =~ "T.*")
   }
 
   func testNotMatches() {
@@ -56,7 +56,7 @@ class RegexTests: XCTestCase {
 
     XCTAssertFalse(regex.matches("Spinosaurus"))
     XCTAssertTrue("Spinosaurus" !~ regex)
-    XCTAssertTrue("Spinosaurus" !~ "Tyrannosaurus$")
+    XCTAssertTrue("Spinosaurus" !~ "T.*")
   }
 
   func testGroup() {
