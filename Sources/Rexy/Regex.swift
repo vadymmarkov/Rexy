@@ -34,7 +34,7 @@ public final class Regex {
   // MARK: - Match
 
   /**
-   Checks if given string matches regular expression.
+   Checks if a given string matches regular expression.
 
    - Parameter source: The string to search for a match.
    - Parameter flags: Flags controlling the behavior of the regexec.
