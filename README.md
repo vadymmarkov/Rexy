@@ -13,6 +13,7 @@
 - [x] Pattern matching
 - [x] Capturing groups
 - [x] Replace method
+- [x] Matching operators
 - [x] Representation of a regular expression error
 - [x] Option sets with default constants for compilation flags (`cflag`) and regex matching flags (`eflag`)
 - [x] Extensive unit test coverage
@@ -26,6 +27,7 @@ When you need to check if a given string matches regular expression:
 ```swift
 import Rexy
 
+// Regular way
 do {
   let regex = try Regex(pattern: "Tyrannosaurus")
   regex.matches("Tyrannosaurus") // => true
@@ -33,6 +35,11 @@ do {
 } catch {
   print(error)
 }
+
+// With custom operators
+"Tyrannosaurus" =~ "T.*" // true
+"Spinosaurus" =~ "T.*" // false
+"Spinosaurus" !~ "T.*" // true
 ```
 
 ### Capturing Groups
