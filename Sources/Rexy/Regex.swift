@@ -4,6 +4,10 @@
   @_exported import Darwin.C
 #endif
 
+public protocol RegexConvertible {
+  var regex: Regex? { get }
+}
+
 /**
  POSIX Regular Expression.
  */
@@ -144,5 +148,14 @@ public final class Regex {
     }
 
     return output + string
+  }
+}
+
+// MARK: - RegexConvertible
+
+extension Regex: RegexConvertible {
+
+  public var regex: Regex? {
+    return self
   }
 }
