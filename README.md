@@ -37,7 +37,6 @@ do {
 }
 
 // With custom operators
-
 "Tyrannosaurus" =~ "T.*" // true
 "Spinosaurus" =~ "T.*" // false
 "Spinosaurus" !~ "T.*" // true
