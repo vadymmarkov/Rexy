@@ -19,23 +19,9 @@
 
 ## Usage
 
-### Match
-
-```swift
-import Rexy
-
-do {
-  let regex = try Regex(pattern: "Tyrannosaurus")
-  regex.matches("Tyrannosaurus") // => true
-  regex.matches("Spinosaurus") // => false
-} catch {
-  print(error)
-}
-```
-
 ### Pattern matching
 
-When you need to checks if a given string matches regular expression:
+When you need to check if a given string matches regular expression:
 
 ```swift
 import Rexy
@@ -68,7 +54,7 @@ do {
 ### Replace
 
 When you need to replace all strings that match a regular expression pattern
-with a specified replacement string.
+with a specified replacement string:
 
 ```swift
 import Rexy
