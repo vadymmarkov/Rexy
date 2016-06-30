@@ -24,6 +24,8 @@ public final class Regex {
 
    - Parameter pattern: Regular expression to be compiled by the regcomp.
    - Parameter flags: Bitwise inclusive OR of 0 or more flags for the regcomp.
+
+   - Throws: Regular expression compilation error.
    */
   public init(_ pattern: String, flags: CFlags = .extended) throws {
     let result = regcomp(&compiledPattern, pattern, flags.rawValue)
@@ -49,7 +51,7 @@ public final class Regex {
    - Returns: True if a match is found.
    */
   public func isMatch(_ source: String, flags: EFlags = []) -> Bool {
-    return matches(source, count: 1, startAt: 0, max: 1, flags: flags).count > 0
+    return !matches(source, count: 1, startAt: 0, max: 1, flags: flags).isEmpty
   }
 
   /**
@@ -64,7 +66,7 @@ public final class Regex {
   public func match(_ source: String, flags: EFlags = []) -> String? {
     let results = matches(source, count: 1, startAt: 0, max: 1, flags: flags)
 
-    guard results.count > 0 else {
+    guard !results.isEmpty else {
       return nil
     }
 
@@ -161,7 +163,7 @@ public final class Regex {
    - Parameter source: The string to search for a match.
    - Parameter count: The maximum elements count.
    - Parameter startAt: The start index.
-   - Parameter maxMatches: The maximum matches count.
+   - Parameter max: The maximum matches count.
    - Parameter flags: Flags controlling the behavior of the regexec.
 
    - Returns: The found matches.

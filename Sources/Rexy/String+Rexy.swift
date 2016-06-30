@@ -20,6 +20,6 @@ public func =~ (source: String, pattern: RegexConvertible?) -> Bool {
   return matches
 }
 
-public func !~ (source:String, pattern: RegexConvertible?) -> Bool {
+public func !~ (source: String, pattern: RegexConvertible?) -> Bool {
   return !(source =~ pattern)
 }

@@ -46,7 +46,7 @@ do {
 ### Matches
 
 When you want to search an input string for all occurrences of a regular
-expression and get the matches.
+expression and get the matches:
 
 ```swift
 import Rexy
@@ -59,7 +59,7 @@ do {
 }
 ```
 
-When you want to get the first occurrence:
+When you're interested only in the first occurrence:
 
 ```swift
 import Rexy
