@@ -16,22 +16,23 @@
 - [x] Matching operators
 - [x] Representation of a regular expression error
 - [x] Option sets with default constants for compilation flags (`cflag`) and regex matching flags (`eflag`)
-- [x] Extensive unit test coverage
+- [x] Unit test coverage
+- [x] No dependencies
 
 ## Usage
 
 ### Pattern matching
 
-When you need to check if a given string matches regular expression:
+When you want to check if a given string matches regular expression:
 
 ```swift
 import Rexy
 
 // Regular way
 do {
-  let regex = try Regex(pattern: "Tyrannosaurus")
-  regex.matches("Tyrannosaurus") // => true
-  regex.matches("Spinosaurus") // => false
+  let regex = try Regex("Tyrannosaurus")
+  regex.isMatch("Tyrannosaurus") // => true
+  regex.isMatch("Spinosaurus") // => false
 } catch {
   print(error)
 }
@@ -42,15 +43,44 @@ do {
 "Spinosaurus" !~ "T.*" // true
 ```
 
-### Capturing Groups
+### Matches
 
-When you need to match and capture groups:
+When you want to search an input string for all occurrences of a regular
+expression and get the matches.
 
 ```swift
 import Rexy
 
 do {
-  let regex = try Regex(pattern: "(Tyrannosaurus) (Rex)")
+  let regex = try Regex("[a-z]+")
+  regex.matches("a1b1") // ["a", "b"])
+} catch {
+  print(error)
+}
+```
+
+When you want to get the first occurrence:
+
+```swift
+import Rexy
+
+do {
+  let regex = try Regex("[a-z]+")
+  regex.matches("a1b1") // "a"
+} catch {
+  print(error)
+}
+```
+
+### Capturing Groups
+
+When you want to match and capture groups:
+
+```swift
+import Rexy
+
+do {
+  let regex = try Regex("(Tyrannosaurus) (Rex)")
   regex.groups("Tyrannosaurus Rex") // => ["Tyrannosaurus", "Rex"]
   regex.groups("Spinosaurus") // => []
 } catch {
@@ -60,14 +90,14 @@ do {
 
 ### Replace
 
-When you need to replace all strings that match a regular expression pattern
+When you want to replace all strings that match a regular expression pattern
 with a specified replacement string:
 
 ```swift
 import Rexy
 
 do {
-  let regex = try! Regex(pattern: "Tyrannosaurus")
+  let regex = try! Regex("Tyrannosaurus")
   regex.replace("Tyrannosaurus Rex Tyrannosaurus", with: "Dinosaur") // => "Dinosaur Rex Dinosaur"
   regex.replace("Spinosaurus", with: "Dinosaur") // => Spinosaurus
 } catch {
@@ -87,6 +117,11 @@ To install it, simply add the following lines to your `Package.swift`:
 ## Author
 
 Vadym Markov, markov.vadym@gmail.com
+
+## Credits
+
+Credits for inspiration go to [POSIXRegex](https://github.com/Zewo/POSIXRegex)
+by [Zewo](https://github.com/Zewo)
 
 ## Contributing
 

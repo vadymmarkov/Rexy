@@ -1,9 +1,12 @@
 #if os(Linux)
-  @_exported import Glibc
+  import Glibc
 #else
-  @_exported import Darwin.C
+  import Darwin.C
 #endif
 
+/**
+ Protocol for types that could produce `Regex`
+ */
 public protocol RegexConvertible {
   var regex: Regex? { get }
 }
@@ -22,11 +25,11 @@ public final class Regex {
    - Parameter pattern: Regular expression to be compiled by the regcomp.
    - Parameter flags: Bitwise inclusive OR of 0 or more flags for the regcomp.
    */
-  public init(pattern: String, flags: CFlags = .extended) throws {
+  public init(_ pattern: String, flags: CFlags = .extended) throws {
     let result = regcomp(&compiledPattern, pattern, flags.rawValue)
 
     guard result == 0 else {
-      throw Error(from: result, compiledPattern: compiledPattern)
+      throw Error(result: result, compiledPattern: compiledPattern)
     }
   }
 
@@ -45,11 +48,40 @@ public final class Regex {
 
    - Returns: True if a match is found.
    */
-  public func matches(_ source: String, flags: EFlags = []) -> Bool {
-    var elements = [regmatch_t](repeating: regmatch_t(), count: 1)
-    let result = regexec(&compiledPattern, source, elements.count, &elements, flags.rawValue)
+  public func isMatch(_ source: String, flags: EFlags = []) -> Bool {
+    return matches(source, count: 1, startAt: 0, max: 1, flags: flags).count > 0
+  }
 
-    return result == 0
+  /**
+   Searches an input string for a substring that matches a regular expression
+   and returns the first occurrence.
+
+   - Parameter source: The string to search for a match.
+   - Parameter flags: Flags controlling the behavior of the regexec.
+
+   - Returns: The found matches.
+   */
+  public func match(_ source: String, flags: EFlags = []) -> String? {
+    let results = matches(source, count: 1, startAt: 0, max: 1, flags: flags)
+
+    guard results.count > 0 else {
+      return nil
+    }
+
+    return results[0]
+  }
+
+  /**
+   Searches an input string for all occurrences of a regular expression and returns the matches.
+
+   - Parameter source: The string to search for a match.
+   - Parameter maxMatches: The maximum matches count.
+   - Parameter flags: Flags controlling the behavior of the regexec.
+
+   - Returns: The found matches.
+   */
+  public func matches(_ source: String, maxMatches: Int = Int.max, flags: EFlags = []) -> [String] {
+    return matches(source, count: 1, startAt: 0, max: maxMatches, flags: flags)
   }
 
   // MARK: - Group
@@ -64,40 +96,11 @@ public final class Regex {
 
    - Returns: Found groups.
    */
-  public func groups(_ source: String, maxGroups: Int = 10, maxMatches: Int = Int.max,
+  public func groups(_ source: String,
+                     maxGroups: Int = 10,
+                     maxMatches: Int = Int.max,
                      flags: EFlags = []) -> [String] {
-    var string = source
-    var groups = [String]()
-
-    for _ in 0 ..< maxMatches {
-      var elements = [regmatch_t](repeating: regmatch_t(), count: maxGroups)
-      let result = regexec(&compiledPattern, string, elements.count, &elements, flags.rawValue)
-
-      guard result == 0 else {
-        break
-      }
-
-      for element in elements[1 ..< elements.count] where element.rm_so != -1 {
-        let start = Int(element.rm_so)
-        let end = Int(element.rm_eo)
-        let startIndex = string.index(string.startIndex, offsetBy: start)
-        let endIndex = string.index(string.startIndex, offsetBy: end)
-        let group = string[startIndex..<endIndex]
-
-        groups.append(group)
-      }
-
-      let offset = Int(elements[0].rm_eo)
-      let startIndex = string.utf8.index(string.utf8.startIndex, offsetBy: offset)
-
-      guard let substring = String(string.utf8[startIndex ..< string.utf8.endIndex]) else {
-        break
-      }
-
-      string = substring
-    }
-
-    return groups
+    return matches(source, count: maxGroups, startAt: 1, max: maxMatches, flags: flags)
   }
 
   // MARK: - Replace
@@ -113,7 +116,9 @@ public final class Regex {
 
    - Returns: A new string where replacement string takes the place of each matched string.
    */
-  public func replace(_ source: String, with replacement: String, maxMatches: Int = Int.max,
+  public func replace(_ source: String,
+                      with replacement: String,
+                      maxMatches: Int = Int.max,
                       flags: EFlags = []) -> String {
     var string = source
     var output: String = ""
@@ -148,6 +153,53 @@ public final class Regex {
     }
 
     return output + string
+  }
+
+  /**
+   Searches an input string for all occurrences of a regular expression and returns the matches.
+
+   - Parameter source: The string to search for a match.
+   - Parameter count: The maximum elements count.
+   - Parameter startAt: The start index.
+   - Parameter maxMatches: The maximum matches count.
+   - Parameter flags: Flags controlling the behavior of the regexec.
+
+   - Returns: The found matches.
+   */
+  private func matches(_ source: String,
+                       count: Int = 1,
+                       startAt index: Int = 0,
+                       max: Int = Int.max,
+                       flags: EFlags = []) -> [String] {
+    var string = source
+    var results = [String]()
+
+    for _ in 0 ..< max {
+      var elements = [regmatch_t](repeating: regmatch_t(), count: count)
+      let result = regexec(&compiledPattern, string, elements.count, &elements, flags.rawValue)
+
+      guard result == 0 else {
+        break
+      }
+
+      for element in elements[index ..< elements.count] where element.rm_so != -1 {
+        let startIndex = string.index(string.startIndex, offsetBy: Int(element.rm_so))
+        let endIndex = string.index(string.startIndex, offsetBy: Int(element.rm_eo))
+        let result = string[startIndex ..< endIndex]
+
+        results.append(result)
+      }
+
+      let startIndex = string.utf8.index(string.utf8.startIndex, offsetBy: Int(elements[0].rm_eo))
+
+      guard let substring = String(string.utf8[startIndex ..< string.utf8.endIndex]) else {
+        break
+      }
+
+      string = substring
+    }
+
+    return results
   }
 }
 

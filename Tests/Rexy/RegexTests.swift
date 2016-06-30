@@ -7,8 +7,10 @@ class RegexTests: XCTestCase {
     return [
       ("testInitWithValidPattern", testInitWithValidPattern),
       ("testInitWithInvalidPattern", testInitWithInvalidPattern),
+      ("testMatches", testIsMatch),
+      ("testNotMatches", testIsNotMatch),
+      ("testMatch", testMatch),
       ("testMatches", testMatches),
-      ("testNotMatches", testNotMatches),
       ("testGroup", testGroup),
       ("testGroups", testGroups),
       ("testNoGroups", testNoGroups),
@@ -23,7 +25,7 @@ class RegexTests: XCTestCase {
     var regex: Regex?
 
     do {
-      regex = try Regex(pattern: "rexy")
+      regex = try Regex("rexy")
     } catch {
       XCTFail("`Regex` throws an error: \(error)")
     }
@@ -35,7 +37,7 @@ class RegexTests: XCTestCase {
     var regex: Regex?
 
     do {
-      regex = try Regex(pattern: "|-)'-'(-|")
+      regex = try Regex("|-)'-'(-|")
       XCTFail("`Regex` does not throw an error")
     } catch {
       print(error)
@@ -44,51 +46,61 @@ class RegexTests: XCTestCase {
     XCTAssertNil(regex)
   }
 
-  func testMatches() {
-    let regex = try! Regex(pattern: "Tyrannosaurus")
-    XCTAssertTrue(regex.matches("Tyrannosaurus"))
+  func testIsMatch() {
+    let regex = try! Regex("Tyrannosaurus")
+    XCTAssertTrue(regex.isMatch("Tyrannosaurus"))
     XCTAssertTrue("Tyrannosaurus" =~ regex)
     XCTAssertTrue("Tyrannosaurus" =~ "T.*")
   }
 
-  func testNotMatches() {
-    let regex = try! Regex(pattern: "Tyrannosaurus")
+  func testIsNotMatch() {
+    let regex = try! Regex("Tyrannosaurus")
 
-    XCTAssertFalse(regex.matches("Spinosaurus"))
+    XCTAssertFalse(regex.isMatch("Spinosaurus"))
     XCTAssertTrue("Spinosaurus" !~ regex)
     XCTAssertTrue("Spinosaurus" !~ "T.*")
   }
 
+  func testMatch() {
+    let regex = try! Regex("[a-z]+")
+    XCTAssertEqual(regex.match("a1b1"), "a")
+  }
+
+  func testMatches() {
+    let regex = try! Regex("[a-z]+")
+    XCTAssertEqual(regex.matches("a1b1"), ["a", "b"])
+  }
+
   func testGroup() {
-    let regex = try! Regex(pattern: "(Tyrannosaurus)")
+    let regex = try! Regex("(Tyrannosaurus)")
     let groups = regex.groups("Tyrannosaurus")
 
     XCTAssertEqual(groups, ["Tyrannosaurus"])
   }
 
   func testGroups() {
-    let regex = try! Regex(pattern: "(Tyrannosaurus) (Rex)")
+    let regex = try! Regex("(Tyrannosaurus) (Rex)")
     let groups = regex.groups("Tyrannosaurus Rex")
 
     XCTAssertEqual(groups, ["Tyrannosaurus", "Rex"])
   }
 
   func testNoGroups() {
-    let regex = try! Regex(pattern: "(Tyrannosaurus)")
+    let regex = try! Regex("(Tyrannosaurus)")
     let groups = regex.groups("Spinosaurus")
 
     XCTAssertTrue(groups.isEmpty)
   }
 
   func testReplace() {
-    let regex = try! Regex(pattern: "Tyrannosaurus")
+    let regex = try! Regex("Tyrannosaurus")
     let string = regex.replace("Tyrannosaurus Rex Tyrannosaurus", with: "Dinosaur")
 
     XCTAssertEqual(string, "Dinosaur Rex Dinosaur")
   }
 
   func testNoReplace() {
-    let regex = try! Regex(pattern: "Spinosaurus")
+    let regex = try! Regex("Spinosaurus")
     let string = regex.replace("Tyrannosaurus Rex", with: "Dinosaur")
 
     XCTAssertEqual(string, "Tyrannosaurus Rex")

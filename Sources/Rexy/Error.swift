@@ -1,13 +1,13 @@
 #if os(Linux)
-  @_exported import Glibc
+  import Glibc
 #else
-  @_exported import Darwin.C
+  import Darwin.C
 #endif
 
 /**
  Representation of Regular Expression error.
  */
-public struct Error: ErrorProtocol {
+public struct Error: ErrorProtocol, CustomStringConvertible {
 
   /// Error description.
   public let description: String
@@ -18,11 +18,11 @@ public struct Error: ErrorProtocol {
    - Parameter result: Compiled result.
    - Parameter compiledPattern: Compiled regex pattern.
    */
-  public init(from result: Int32, compiledPattern: regex_t) {
-    var compiledPattern = compiledPattern
-    var buffer = [Int8](repeating: 0, count: Int(BUFSIZ))
+  public init(result: Int32, compiledPattern: regex_t) {
+    var compiled = compiledPattern
+    var buffer = [Int8](repeating: 0, count: 1024)
 
-    regerror(result, &compiledPattern, &buffer, buffer.count)
-    description = String(validatingUTF8: buffer) ?? ""
+    regerror(result, &compiled, &buffer, buffer.count)
+    description = String(cString: buffer) ?? ""
   }
 }
