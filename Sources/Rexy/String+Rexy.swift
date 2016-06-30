@@ -1,7 +1,7 @@
 extension String: RegexConvertible {
 
   public var regex: Regex? {
-    return try? Regex(pattern: self)
+    return try? Regex(self)
   }
 }
 

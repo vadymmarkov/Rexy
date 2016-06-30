@@ -22,7 +22,7 @@ public final class Regex {
    - Parameter pattern: Regular expression to be compiled by the regcomp.
    - Parameter flags: Bitwise inclusive OR of 0 or more flags for the regcomp.
    */
-  public init(pattern: String, flags: CFlags = .extended) throws {
+  public init(_ pattern: String, flags: CFlags = .extended) throws {
     let result = regcomp(&compiledPattern, pattern, flags.rawValue)
 
     guard result == 0 else {
