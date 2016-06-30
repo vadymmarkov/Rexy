@@ -1,7 +1,7 @@
 #if os(Linux)
-  @_exported import Glibc
+  import Glibc
 #else
-  @_exported import Darwin.C
+  import Darwin.C
 #endif
 
 public extension Regex {
@@ -24,12 +24,12 @@ public extension Regex {
     }
 
     /// First character not at beginning of line.
-    public static let notAtBeginningOfLine = EFlags(rawValue: REG_NOTBOL)
+    public static let notBeginningOfLine = EFlags(rawValue: 1)
 
     /// Last character not at end of line.
-    public static let notAtEndOfLine = EFlags(rawValue: REG_NOTEOL)
+    public static let notEndOfLine = EFlags(rawValue: 2)
 
     /// String start/end in pmatch[0].
-    public static let startEnd = EFlags(rawValue: REG_STARTEND)
+    public static let startEnd = EFlags(rawValue: 4)
   }
 }

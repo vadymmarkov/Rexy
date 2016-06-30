@@ -5,11 +5,13 @@ extension String: RegexConvertible {
   }
 }
 
+// MARK: - Operators
+
 infix operator =~ {associativity left precedence 140}
 infix operator !~ {associativity left precedence 140}
 
 public func =~ (source: String, pattern: RegexConvertible?) -> Bool {
-  guard let matches = pattern?.regex?.matches(source) else {
+  guard let matches = pattern?.regex?.isMatch(source) else {
     return false
   }
 

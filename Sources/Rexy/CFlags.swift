@@ -1,7 +1,7 @@
 #if os(Linux)
-  @_exported import Glibc
+  import Glibc
 #else
-  @_exported import Darwin.C
+  import Darwin.C
 #endif
 
 public extension Regex {
@@ -23,6 +23,12 @@ public extension Regex {
       self.rawValue = rawValue
     }
 
+    /// Default options
+    public static let regular = [extended]
+
+    // No options
+    public static let none = [CFlags]()
+
     /// Use POSIX Basic Regular Expression syntax.
     public static let basic = CFlags(rawValue: 0)
 
@@ -33,13 +39,13 @@ public extension Regex {
     public static let caseInsensitive = CFlags(rawValue: 2)
 
     /// Do not report position of matches.
-    public static let noPositions = CFlags(rawValue: 3)
+    public static let ignorePositions = CFlags(rawValue: 3)
 
     // Newline-sensitive matching.
     public static let newLineSensitive = CFlags(rawValue: 4)
 
-    /// Do not report position of matches.
-    public static let noSpecialCharacters = CFlags(rawValue: 5)
+    /// Ignore special characters.
+    public static let ignoreSpecialCharacters = CFlags(rawValue: 5)
 
     /// Interpret the entire regex argument as a literal string.
     public static let literal = CFlags(rawValue: 6)

@@ -12,8 +12,8 @@ class EFlagsTests: XCTestCase {
   // MARK: - Tests
 
   func testFlags() {
-    XCTAssertEqual(Regex.EFlags.notAtBeginningOfLine.rawValue, REG_NOTBOL)
-    XCTAssertEqual(Regex.EFlags.notAtEndOfLine.rawValue, REG_NOTEOL)
-    XCTAssertEqual(Regex.EFlags.startEnd.rawValue, REG_STARTEND)
+    XCTAssertEqual(Regex.EFlags.notBeginningOfLine.rawValue, 1)
+    XCTAssertEqual(Regex.EFlags.notEndOfLine.rawValue, 2)
+    XCTAssertEqual(Regex.EFlags.startEnd.rawValue, 4)
   }
 }
