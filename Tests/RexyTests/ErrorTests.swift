@@ -20,7 +20,7 @@ class ErrorTests: XCTestCase {
   func testInit() {
     var compiledPattern = regex_t()
     let result = regcomp(&compiledPattern, "(ツ)", Regex.CFlags.extended.rawValue)
-    let error = Error(result: result, compiledPattern: compiledPattern)
+    let error = RexyError(result: result, compiledPattern: compiledPattern)
 
     var buffer = [Int8](repeating: 0, count: Int(1024))
     regerror(result, &compiledPattern, &buffer, buffer.count)

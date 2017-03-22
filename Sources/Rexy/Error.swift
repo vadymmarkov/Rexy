@@ -7,7 +7,7 @@
 /**
  Representation of Regular Expression error.
  */
-public struct Error: ErrorProtocol, CustomStringConvertible {
+public struct RexyError: Error, CustomStringConvertible {
 
   /// Error description.
   public let description: String
@@ -23,6 +23,6 @@ public struct Error: ErrorProtocol, CustomStringConvertible {
     var buffer = [Int8](repeating: 0, count: 1024)
 
     regerror(result, &compiled, &buffer, buffer.count)
-    description = String(cString: buffer) ?? ""
+    description = String(cString: buffer) 
   }
 }
