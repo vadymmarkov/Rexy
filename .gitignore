@@ -33,6 +33,6 @@ Pods
 Carthage
 
 # SPM
-.build/
-Packages/
-Rexy.xcodeproj
+/.build
+/Packages
+/*.xcodeproj
