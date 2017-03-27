@@ -1,7 +1,7 @@
 #if os(Linux)
 
 import XCTest
-@testable import RexyTestSuite
+@testable import RexyTests
 
 XCTMain([
   testCase(CFlagsTests.allTests),

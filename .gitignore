@@ -33,5 +33,6 @@ Pods
 Carthage
 
 # SPM
-.build/
-Packages/
+/.build
+/Packages
+/*.xcodeproj

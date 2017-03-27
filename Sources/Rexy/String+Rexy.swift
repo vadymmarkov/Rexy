@@ -9,8 +9,8 @@ extension String: RegexConvertible {
 
 // MARK: - Operators
 
-infix operator =~ {associativity left precedence 140}
-infix operator !~ {associativity left precedence 140}
+infix operator =~ : ComparisonPrecedence
+infix operator !~ : ComparisonPrecedence
 
 public func =~ (source: String, pattern: RegexConvertible?) -> Bool {
   guard let matches = pattern?.regex?.isMatch(source) else {
