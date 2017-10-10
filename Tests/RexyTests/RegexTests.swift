@@ -1,8 +1,7 @@
 import XCTest
 @testable import Rexy
 
-class RegexTests: XCTestCase {
-
+final class RegexTests: XCTestCase {
   static var allTests: [(String, (RegexTests) -> () throws -> Void)] {
     return [
       ("testInitWithValidPattern", testInitWithValidPattern),

@@ -1,7 +1,6 @@
 // MARK: - RegexConvertible
 
 extension String: RegexConvertible {
-
   public var regex: Regex? {
     return try? Regex(self)
   }

@@ -1,8 +1,7 @@
 import XCTest
 @testable import Rexy
 
-class EFlagsTests: XCTestCase {
-
+final class EFlagsTests: XCTestCase {
   static var allTests: [(String, (EFlagsTests) -> () throws -> Void)] {
     return [
       ("testFlags", testFlags)

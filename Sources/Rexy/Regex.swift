@@ -15,7 +15,6 @@ public protocol RegexConvertible {
  POSIX Regular Expression.
  */
 public final class Regex {
-
   /// Specifies the structure to receive the compiled output of the regcomp.
   var compiledPattern = regex_t()
 
@@ -189,7 +188,7 @@ public final class Regex {
         let endIndex = string.index(string.startIndex, offsetBy: Int(element.rm_eo))
         let result = string[startIndex ..< endIndex]
 
-        results.append(result)
+        results.append(String(result))
       }
 
       let startIndex = string.utf8.index(string.utf8.startIndex, offsetBy: Int(elements[0].rm_eo))
@@ -208,7 +207,6 @@ public final class Regex {
 // MARK: - RegexConvertible
 
 extension Regex: RegexConvertible {
-
   public var regex: Regex? {
     return self
   }

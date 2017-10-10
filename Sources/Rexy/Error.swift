@@ -8,7 +8,6 @@
  Representation of Regular Expression error.
  */
 public struct RexyError: Error, CustomStringConvertible {
-
   /// Error description.
   public let description: String
 

@@ -7,8 +7,7 @@
 import XCTest
 @testable import Rexy
 
-class ErrorTests: XCTestCase {
-
+final class ErrorTests: XCTestCase {
   static var allTests: [(String, (ErrorTests) -> () throws -> Void)] {
     return [
       ("testInit", testInit)

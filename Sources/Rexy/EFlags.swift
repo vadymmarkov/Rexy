@@ -5,12 +5,10 @@
 #endif
 
 public extension Regex {
-
   /**
    POSIX regex matching flags (eflag).
    */
   public struct EFlags: OptionSet {
-
     /// Raw value.
     public let rawValue: Int32
 
