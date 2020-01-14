@@ -7,7 +7,7 @@ set -e
 SWIFTLINT_SOURCE_URL="https://github.com/realm/SwiftLint.git"
 SWIFTLINT_SOURCE_PATH="/tmp/SwiftLint"
 SWIFTLINT_PKG_PATH="/tmp/SwiftLint.pkg"
-SWIFTLINT_PKG_URL="https://github.com/realm/SwiftLint/releases/download/0.10.0/SwiftLint.pkg"
+SWIFTLINT_PKG_URL="https://github.com/realm/SwiftLint/releases/download/0.38.2/SwiftLint.pkg"
 
 wget --output-document=$SWIFTLINT_PKG_PATH $SWIFTLINT_PKG_URL
 

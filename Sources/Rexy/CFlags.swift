@@ -8,7 +8,7 @@ public extension Regex {
   /**
    Flags used to determine the type of compilation (cflag).
    */
-  public struct CFlags: OptionSet {
+  struct CFlags: OptionSet {
     /// Raw value.
     public let rawValue: Int32
 

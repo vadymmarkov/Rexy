@@ -22,6 +22,6 @@ public struct RexyError: Error, CustomStringConvertible {
     var buffer = [Int8](repeating: 0, count: 1024)
 
     regerror(result, &compiled, &buffer, buffer.count)
-    description = String(cString: buffer) 
+    description = String(cString: buffer)
   }
 }

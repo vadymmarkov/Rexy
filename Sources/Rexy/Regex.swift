@@ -62,7 +62,7 @@ public final class Regex {
 
    - Returns: The found matches.
    */
-  public func match(_ source: String, flags: EFlags = []) -> String? {
+  public func match(_ source: String, flags: EFlags = []) -> Substring? {
     let results = matches(source, count: 1, startAt: 0, max: 1, flags: flags)
 
     guard !results.isEmpty else {
@@ -81,7 +81,7 @@ public final class Regex {
 
    - Returns: The found matches.
    */
-  public func matches(_ source: String, maxMatches: Int = Int.max, flags: EFlags = []) -> [String] {
+  public func matches(_ source: String, maxMatches: Int = Int.max, flags: EFlags = []) -> [Substring] {
     return matches(source, count: 1, startAt: 0, max: maxMatches, flags: flags)
   }
 
@@ -100,7 +100,7 @@ public final class Regex {
   public func groups(_ source: String,
                      maxGroups: Int = 10,
                      maxMatches: Int = Int.max,
-                     flags: EFlags = []) -> [String] {
+                     flags: EFlags = []) -> [Substring] {
     return matches(source, count: maxGroups, startAt: 1, max: maxMatches, flags: flags)
   }
 
@@ -148,9 +148,9 @@ public final class Regex {
 
       let replacedEndIndex = replaced.utf8.index(replaced.utf8.startIndex, offsetBy: replacedOffset)
 
-      replaced = String(describing: replaced.utf8[replaced.utf8.startIndex ..< replacedEndIndex])
+      replaced = String(replaced.utf8[replaced.utf8.startIndex ..< replacedEndIndex])!
       output += replaced
-      string = String(describing: string.utf8[startIndex ..< endIndex])
+      string = String(string.utf8[startIndex ..< endIndex])!
     }
 
     return output + string
@@ -171,33 +171,30 @@ public final class Regex {
                        count: Int = 1,
                        startAt index: Int = 0,
                        max: Int = Int.max,
-                       flags: EFlags = []) -> [String] {
-    var string = source
-    var results = [String]()
+                       flags: EFlags = []) -> [Substring] {
+    var string = Substring(source)
+    var results = [Substring]()
 
     for _ in 0 ..< max {
       var elements = [regmatch_t](repeating: regmatch_t(), count: count)
-      let result = regexec(&compiledPattern, string, elements.count, &elements, flags.rawValue)
+      let result = regexec(&compiledPattern, String(string), elements.count, &elements, flags.rawValue)
 
       guard result == 0 else {
         break
       }
 
+      let utf8 = string.utf8
       for element in elements[index ..< elements.count] where element.rm_so != -1 {
-        let startIndex = string.index(string.startIndex, offsetBy: Int(element.rm_so))
-        let endIndex = string.index(string.startIndex, offsetBy: Int(element.rm_eo))
+        let startIndex = utf8.index(utf8.startIndex, offsetBy: Int(element.rm_so)).samePosition(in: source)!
+        let endIndex = utf8.index(utf8.startIndex, offsetBy: Int(element.rm_eo)).samePosition(in: source)!
         let result = string[startIndex ..< endIndex]
 
-        results.append(String(result))
+        results.append(result)
       }
 
-      let startIndex = string.utf8.index(string.utf8.startIndex, offsetBy: Int(elements[0].rm_eo))
-
-      guard let substring = String(string.utf8[startIndex ..< string.utf8.endIndex]) else {
-        break
-      }
-
-      string = substring
+      let startIndex = utf8.index(utf8.startIndex, offsetBy: Int(elements[0].rm_eo)).samePosition(in: source)!
+      let range: Range<String.Index> = startIndex ..< source.endIndex
+      string = source[range]
     }
 
     return results
