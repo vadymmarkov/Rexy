@@ -3,7 +3,7 @@
 [![CI Status](http://img.shields.io/travis/vadymmarkov/Rexy.svg?style=flat)](https://travis-ci.org/vadymmarkov/Rexy)
 ![Mac OS X](https://img.shields.io/badge/os-Mac%20OS%20X-green.svg?style=flat)
 ![Linux](https://img.shields.io/badge/os-linux-green.svg?style=flat)
-![Swift](https://img.shields.io/badge/%20in-swift%204.0-orange.svg)
+![Swift](https://img.shields.io/badge/in-Swift%205.1-brightgreen.svg)
 [![License](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
 **Rexy** is a pure Swift implementation of POSIX Regular Expressions.
@@ -113,6 +113,7 @@ To install it, simply add the following lines to your `Package.swift`:
 ```swift
 .Package(url: "https://github.com/vadymmarkov/Rexy.git", versions: Version(0,1,0)..<Version(1,0,0))
 ```
+Alternatively, you can install it in your Xcode project by adding a Swift package dependency.
 
 ## Author
 
